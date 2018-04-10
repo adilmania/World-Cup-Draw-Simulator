@@ -3,27 +3,27 @@
 
 // Les Structures
 
-typedef struct pays{
-    char* nom;
+typedef struct country{
+    char* name;
     char* cont;
-}pays;
+}country;
 
-typedef struct chapeau{
-    pays p1;
-    pays p2;
-    pays p3;
-    pays p4;
-    pays p5;
-    pays p6;
-    pays p7;
-    pays p8;
-}Chapeau;
+typedef struct pot{
+    country p1;
+    country p2;
+    country p3;
+    country p4;
+    country p5;
+    country p6;
+    country p7;
+    country p8;
+}pot;
 
-typedef struct groupe{
-    char* pays1;
-    char* pays2;
-    char* pays3;
-    char* pays4;
-}Groupe;
+typedef struct group{
+    char* country1;
+    char* country2;
+    char* country3;
+    char* country4;
+}group;
 
 #endif
