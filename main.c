@@ -5,7 +5,7 @@
 #include <time.h>
 #include "draw.h"
 
-void Remplissage_1(int s[])
+void filling_1(int s[])
 {
     int i, j, r;
     srand(time(NULL));
@@ -28,7 +28,7 @@ void Remplissage_1(int s[])
     }
 }
 
-int Remplissage_2(int l[], pays ** Groupes, pays ** Chapeaux)
+int filling_2(int l[], country ** groups, country ** pots)
 {
     int test2;
     int i, j, r;
@@ -42,7 +42,7 @@ int Remplissage_2(int l[], pays ** Groupes, pays ** Chapeaux)
             r = ((rand() % 8) + 1);
             for (j = 0; j < i; j++)
             {
-                if ( r == l[j] || ( (*(*(Groupes+i))).cont == (*(*(Chapeaux+1)+r-1)).cont ) && ( (*(*(Chapeaux+1)+r-1)).cont == "conmebol" ) )
+                if ( r == l[j] || ( (*(*(groups+i))).cont == (*(*(pots+1)+r-1)).cont ) && ( (*(*(pots+1)+r-1)).cont == "conmebol" ) )
                 {
                     r = 0;
                     cpt++;
@@ -51,7 +51,7 @@ int Remplissage_2(int l[], pays ** Groupes, pays ** Chapeaux)
         }
         while (r == 0 && cpt<1000000);
         l[i] = r;
-        (*(*(Groupes+i)+1)) = (*(*(Chapeaux+1)+r-1));
+        (*(*(groups+i)+1)) = (*(*(pots+1)+r-1));
         if (cpt>=1000000)
         {
             test2 = 1;
@@ -60,7 +60,7 @@ int Remplissage_2(int l[], pays ** Groupes, pays ** Chapeaux)
     return test2;
 }
 
-int Remplissage_3(int l[], pays ** Groupes, pays ** Chapeaux)
+int filling_3(int l[], country ** groups, country ** pots)
 {
     int test3;
     int i, j, r;
@@ -76,11 +76,11 @@ int Remplissage_3(int l[], pays ** Groupes, pays ** Chapeaux)
             {
                 if ( r == l[j] ||
 
-                ( ((*(*(Groupes+i))).cont == ((*(*(Groupes+i)+1)).cont)) && ((*(*(Groupes+i))).cont == ((*(*(Chapeaux+2)+r-1)).cont)) ) 
+                ( ((*(*(groups+i))).cont == ((*(*(groups+i)+1)).cont)) && ((*(*(groups+i))).cont == ((*(*(pots+2)+r-1)).cont)) ) 
 
                 || 
                 
-                ( ( (*(*(Groupes+i)+1)).cont == (*(*(Chapeaux+2)+r-1)).cont ) && ( (*(*(Chapeaux+2)+r-1)).cont == "concacaf" ) )
+                ( ( (*(*(groups+i)+1)).cont == (*(*(pots+2)+r-1)).cont ) && ( (*(*(pots+2)+r-1)).cont == "concacaf" ) )
 
                 )
                 {
@@ -91,7 +91,7 @@ int Remplissage_3(int l[], pays ** Groupes, pays ** Chapeaux)
         }
         while (r == 0 && cpt2<1000000);
         l[i] = r;
-        (*(*(Groupes+i)+2)) = (*(*(Chapeaux+2)+r-1));
+        (*(*(groups+i)+2)) = (*(*(pots+2)+r-1));
         if (cpt2>=1000000)
         {
             test3 = 1;
@@ -101,7 +101,7 @@ int Remplissage_3(int l[], pays ** Groupes, pays ** Chapeaux)
 }
 
 
-int Remplissage_4(int l[], pays ** Groupes, pays ** Chapeaux)
+int filling_4(int l[], country ** groups, country ** pots)
 {
     int test4;
     int i, j, r;
@@ -116,31 +116,31 @@ int Remplissage_4(int l[], pays ** Groupes, pays ** Chapeaux)
             for (j = 0; j < i; j++)
             {
                 if ( r == l[j] ||
-                            (   ( (*(*(Chapeaux+3)+r-1)).cont == "uefa" ) && 
+                            (   ( (*(*(pots+3)+r-1)).cont == "uefa" ) && 
                                 (
                                     ( 
-                                        ( (*(*(Groupes+i))).cont == (*(*(Groupes+i)+1)).cont ) 
+                                        ( (*(*(groups+i))).cont == (*(*(groups+i)+1)).cont ) 
                                         && 
-                                        ( (*(*(Groupes+i)+1)).cont == "uefa" )     
+                                        ( (*(*(groups+i)+1)).cont == "uefa" )     
                                     )
                                     ||
                                     (
-                                        ( (*(*(Groupes+i))).cont == (*(*(Groupes+i)+2)).cont ) 
+                                        ( (*(*(groups+i))).cont == (*(*(groups+i)+2)).cont ) 
                                         && 
-                                        ( (*(*(Groupes+i))).cont == "uefa" )  
+                                        ( (*(*(groups+i))).cont == "uefa" )  
                                     )
                                     ||
                                     (
-                                        ( (*(*(Groupes+i)+1)).cont == (*(*(Groupes+i)+2)).cont ) 
+                                        ( (*(*(groups+i)+1)).cont == (*(*(groups+i)+2)).cont ) 
                                         && 
-                                        ( (*(*(Groupes+i)+1)).cont == "uefa" )  
+                                        ( (*(*(groups+i)+1)).cont == "uefa" )  
                                     )
                                 )
                             )
                             ||
-                            (   ( (*(*(Chapeaux+3)+r-1)).cont != "uefa" ) && 
+                            (   ( (*(*(pots+3)+r-1)).cont != "uefa" ) && 
                                 (
-                                  ( ( (*(*(Chapeaux+3)+r-1)).cont == (*(*(Groupes+i)+1)).cont ) || ( (*(*(Chapeaux+3)+r-1)).cont == (*(*(Groupes+i)+2)).cont ) )  
+                                  ( ( (*(*(pots+3)+r-1)).cont == (*(*(groups+i)+1)).cont ) || ( (*(*(pots+3)+r-1)).cont == (*(*(groups+i)+2)).cont ) )  
                                 )
                             )
                     )
@@ -152,7 +152,7 @@ int Remplissage_4(int l[], pays ** Groupes, pays ** Chapeaux)
         }
         while (r == 0 && cpt3<1000000);
         l[i] = r;
-        (*(*(Groupes+i)+3)) = (*(*(Chapeaux+3)+r-1));
+        (*(*(groups+i)+3)) = (*(*(pots+3)+r-1));
         if (cpt3>=1000000)
         {
             test4 = 1;
@@ -172,110 +172,109 @@ int main(){
 
         refait = 0;
 
-        Remplissage_1(s);
+        filling_1(s);
 
-        // Initialisation Pays
+        // Initialisation country
 
-        pays Russie; Russie.nom = "Russie"; Russie.cont = "uefa";
-        pays Allemagne; Allemagne.nom = "Allemagne"; Allemagne.cont = "uefa";
-        pays Angleterre; Angleterre.nom = "Angleterre"; Angleterre.cont = "uefa";
-        pays Espagne; Espagne.nom = "Espagne"; Espagne.cont = "uefa";
-        pays France; France.nom = "France"; France.cont = "uefa";
-        pays Belgique; Belgique.nom = "Belgique"; Belgique.cont = "uefa";
-        pays Serbie; Serbie.nom = "Serbie"; Serbie.cont = "uefa";
-        pays Suede; Suede.nom = "Suede"; Suede.cont = "uefa";
-        pays Suisse; Suisse.nom = "Suisse"; Suisse.cont = "uefa";
-        pays Pologne; Pologne.nom = "Pologne"; Pologne.cont = "uefa";
-        pays Portugal; Portugal.nom = "Portugal"; Portugal.cont = "uefa";
-        pays Danemark; Danemark.nom = "Danemark"; Danemark.cont = "uefa";
-        pays Croatie; Croatie.nom = "Croatie"; Croatie.cont = "uefa";
-        pays Islande; Islande.nom = "Islande"; Islande.cont = "uefa";
+        country Russie; Russie.name = "Russie"; Russie.cont = "uefa";
+        country Allemagne; Allemagne.name = "Allemagne"; Allemagne.cont = "uefa";
+        country Angleterre; Angleterre.name = "Angleterre"; Angleterre.cont = "uefa";
+        country Espagne; Espagne.name = "Espagne"; Espagne.cont = "uefa";
+        country France; France.name = "France"; France.cont = "uefa";
+        country Belgique; Belgique.name = "Belgique"; Belgique.cont = "uefa";
+        country Serbie; Serbie.name = "Serbie"; Serbie.cont = "uefa";
+        country Suede; Suede.name = "Suede"; Suede.cont = "uefa";
+        country Suisse; Suisse.name = "Suisse"; Suisse.cont = "uefa";
+        country Pologne; Pologne.name = "Pologne"; Pologne.cont = "uefa";
+        country Portugal; Portugal.name = "Portugal"; Portugal.cont = "uefa";
+        country Danemark; Danemark.name = "Danemark"; Danemark.cont = "uefa";
+        country Croatie; Croatie.name = "Croatie"; Croatie.cont = "uefa";
+        country Islande; Islande.name = "Islande"; Islande.cont = "uefa";
 
-        pays Bresil; Bresil.nom = "Bresil"; Bresil.cont = "conmebol";
-        pays Argentine; Argentine.nom = "Argentine"; Argentine.cont = "conmebol";
-        pays Uruguay; Uruguay.nom = "Uruguay"; Uruguay.cont = "conmebol";
-        pays Colombie; Colombie.nom = "Colombie"; Colombie.cont = "conmebol";
-        pays Perou; Perou.nom = "Perou"; Perou.cont = "conmebol";
+        country Bresil; Bresil.name = "Bresil"; Bresil.cont = "conmebol";
+        country Argentine; Argentine.name = "Argentine"; Argentine.cont = "conmebol";
+        country Uruguay; Uruguay.name = "Uruguay"; Uruguay.cont = "conmebol";
+        country Colombie; Colombie.name = "Colombie"; Colombie.cont = "conmebol";
+        country Perou; Perou.name = "Perou"; Perou.cont = "conmebol";
 
-        pays Mexique; Mexique.nom = "Mexique"; Mexique.cont = "concacaf";
-        pays Costa_Rica; Costa_Rica.nom = "Costa_Rica"; Costa_Rica.cont = "concacaf";
-        pays Panama; Panama.nom = "Panama"; Panama.cont = "concacaf";
+        country Mexique; Mexique.name = "Mexique"; Mexique.cont = "concacaf";
+        country Costa_Rica; Costa_Rica.name = "Costa_Rica"; Costa_Rica.cont = "concacaf";
+        country Panama; Panama.name = "Panama"; Panama.cont = "concacaf";
 
-        pays Nigeria; Nigeria.nom = "Nigeria"; Nigeria.cont = "caf";
-        pays Maroc; Maroc.nom = "Maroc"; Maroc.cont = "caf";
-        pays Tunisie; Tunisie.nom = "Tunisie"; Tunisie.cont = "caf";
-        pays Egypte; Egypte.nom = "Egypte"; Egypte.cont = "caf";
-        pays Senegal; Senegal.nom = "Senegal"; Senegal.cont = "caf";
+        country Nigeria; Nigeria.name = "Nigeria"; Nigeria.cont = "caf";
+        country Maroc; Maroc.name = "Maroc"; Maroc.cont = "caf";
+        country Tunisie; Tunisie.name = "Tunisie"; Tunisie.cont = "caf";
+        country Egypte; Egypte.name = "Egypte"; Egypte.cont = "caf";
+        country Senegal; Senegal.name = "Senegal"; Senegal.cont = "caf";
 
-        pays Coree_du_Sud; Coree_du_Sud.nom = "Coree_du_Sud"; Coree_du_Sud.cont = "afc";
-        pays Japon; Japon.nom = "Japon"; Japon.cont = "afc";
-        pays Arabie_Saoudite; Arabie_Saoudite.nom = "Arabie_Saoudite"; Arabie_Saoudite.cont = "afc";
-        pays Australie; Australie.nom = "Australie"; Australie.cont = "afc";
-        pays Iran; Iran.nom = "Iran"; Iran.cont = "afc";
+        country Coree_du_Sud; Coree_du_Sud.name = "Coree_du_Sud"; Coree_du_Sud.cont = "afc";
+        country Japon; Japon.name = "Japon"; Japon.cont = "afc";
+        country Arabie_Saoudite; Arabie_Saoudite.name = "Arabie_Saoudite"; Arabie_Saoudite.cont = "afc";
+        country Australie; Australie.name = "Australie"; Australie.cont = "afc";
+        country Iran; Iran.name = "Iran"; Iran.cont = "afc";
 
-        // Initialisation Chapeau
+        // Initialisation pot
 
-        pays Chapeau_1[8] = {Russie,Allemagne,Bresil,Portugal,Argentine,Belgique,Pologne,France};
-        pays Chapeau_2[8] = {Espagne,Perou,Suisse,Angleterre,Colombie,Mexique,Uruguay,Croatie};
-        pays Chapeau_3[8] = {Danemark,Islande,Costa_Rica,Suede,Tunisie,Egypte,Senegal,Iran};
-        pays Chapeau_4[8] = {Serbie,Nigeria,Australie,Japon,Maroc,Panama,Coree_du_Sud,Arabie_Saoudite};
+        country pot_1[8] = {Russie,Allemagne,Bresil,Portugal,Argentine,Belgique,Pologne,France};
+        country pot_2[8] = {Espagne,Perou,Suisse,Angleterre,Colombie,Mexique,Uruguay,Croatie};
+        country pot_3[8] = {Danemark,Islande,Costa_Rica,Suede,Tunisie,Egypte,Senegal,Iran};
+        country pot_4[8] = {Serbie,Nigeria,Australie,Japon,Maroc,Panama,Coree_du_Sud,Arabie_Saoudite};
 
-        pays * Chapeaux[4] = {Chapeau_1,Chapeau_2,Chapeau_3,Chapeau_4};  
+        country * pots[4] = {pot_1,pot_2,pot_3,pot_4};  
 
-        // printf("2 Elements du chapeau 1: %s %s \n",(*(*(Chapeaux)+6)).nom,(*(*(Chapeaux)+1)).nom); /* Allemagne : Pologne */
+        // printf("2 Elements du pot 1: %s %s \n",(*(*(pots)+6)).name,(*(*(pots)+1)).name); /* Allemagne : Pologne */
 
-        // Initialisation Groupe
+        // Initialisation Group
 
-        pays Groupe_1[4]; pays Groupe_2[4]; pays Groupe_3[4]; pays Groupe_4[4];
-        pays Groupe_5[4]; pays Groupe_6[4]; pays Groupe_7[4]; pays Groupe_8[4];
-        pays * Groupes[8] = {Groupe_1,Groupe_2,Groupe_3,Groupe_4,Groupe_5,Groupe_6,Groupe_7,Groupe_8};
+        country Group_1[4]; country Group_2[4]; country Group_3[4]; country Group_4[4];
+        country Group_5[4]; country Group_6[4]; country Group_7[4]; country Group_8[4];
+        country * groups[8] = {Group_1,Group_2,Group_3,Group_4,Group_5,Group_6,Group_7,Group_8};
 
-        // Remplissage Groupes - 1er Chapeau
+        // filling groups - 1er pot
             
-        Groupe_1[0] = Chapeau_1[0];
-        Groupe_2[0] = Chapeau_1[(s[0])];
-        Groupe_3[0] = Chapeau_1[(s[1])];
-        Groupe_4[0] = Chapeau_1[(s[2])];
-        Groupe_5[0] = Chapeau_1[(s[3])];
-        Groupe_6[0] = Chapeau_1[(s[4])];
-        Groupe_7[0] = Chapeau_1[(s[5])];
-        Groupe_8[0] = Chapeau_1[(s[6])];
+        Group_1[0] = pot_1[0];
+        Group_2[0] = pot_1[(s[0])];
+        Group_3[0] = pot_1[(s[1])];
+        Group_4[0] = pot_1[(s[2])];
+        Group_5[0] = pot_1[(s[3])];
+        Group_6[0] = pot_1[(s[4])];
+        Group_7[0] = pot_1[(s[5])];
+        Group_8[0] = pot_1[(s[6])];
 
-        // Remplissage Groupes - 2eme Chapeau
+        // filling groups - 2eme pot
 
-        refait = Remplissage_2(l,Groupes,Chapeaux);
+        refait = filling_2(l,groups,pots);
 
-        // Remplissage Groupes - 3eme Chapeau
+        // filling groups - 3eme pot
 
-        refait = Remplissage_3(l,Groupes,Chapeaux);
+        refait = filling_3(l,groups,pots);
 
-        // Remplissage Groupes - 4eme Chapeau
+        // filling groups - 4eme pot
 
-        refait = Remplissage_4(l,Groupes,Chapeaux);
+        refait = filling_4(l,groups,pots);
 
-        // Traitement d'un cas particulier
+        // Particular Case
 
-        if((Groupe_1[0]).nom=="Russie" && (Groupe_1[1]).nom=="Colombie" && (Groupe_1[2]).nom=="Tunisie" && (Groupe_1[3]).nom=="Maroc")
+        if((Group_1[0]).name=="Russie" && (Group_1[1]).name=="Colombie" && (Group_1[2]).name=="Tunisie" && (Group_1[3]).name=="Maroc")
         {
             refait = 1;
         }
 
-        // Affichage 1
+        // Print 1
 
-        printf("\nTIRAGE AU SORT COUPE DU MONDE 2018 - RUSSIE \n\n");
+        printf("\nWORLD CUP 2018 DRAW SIMULATOR - RUSSIA \n\n");
 
-        printf("LE GROUPE 1: %s , %s , %s , %s\n",(Groupe_1[0]).nom,(Groupe_1[1]).nom,(Groupe_1[2]).nom,(Groupe_1[3]).nom);
-        printf("LE GROUPE 2: %s , %s , %s , %s\n",(Groupe_2[0]).nom,(Groupe_2[1]).nom,(Groupe_2[2]).nom,(Groupe_2[3]).nom);
-        printf("LE GROUPE 3: %s , %s , %s , %s\n",(Groupe_3[0]).nom,(Groupe_3[1]).nom,(Groupe_3[2]).nom,(Groupe_3[3]).nom);
-        printf("LE GROUPE 4: %s , %s , %s , %s\n",(Groupe_4[0]).nom,(Groupe_4[1]).nom,(Groupe_4[2]).nom,(Groupe_4[3]).nom);
-        printf("LE GROUPE 5: %s , %s , %s , %s\n",(Groupe_5[0]).nom,(Groupe_5[1]).nom,(Groupe_5[2]).nom,(Groupe_5[3]).nom);
-        printf("LE GROUPE 6: %s , %s , %s , %s\n",(Groupe_6[0]).nom,(Groupe_6[1]).nom,(Groupe_6[2]).nom,(Groupe_6[3]).nom);
-        printf("LE GROUPE 7: %s , %s , %s , %s\n",(Groupe_7[0]).nom,(Groupe_7[1]).nom,(Groupe_7[2]).nom,(Groupe_7[3]).nom);
-        printf("LE GROUPE 8: %s , %s , %s , %s\n",(Groupe_8[0]).nom,(Groupe_8[1]).nom,(Groupe_8[2]).nom,(Groupe_8[3]).nom);
+        printf("The Group 1: %s , %s , %s , %s\n",(Group_1[0]).name,(Group_1[1]).name,(Group_1[2]).name,(Group_1[3]).name);
+        printf("The Group 2: %s , %s , %s , %s\n",(Group_2[0]).name,(Group_2[1]).name,(Group_2[2]).name,(Group_2[3]).name);
+        printf("The Group 3: %s , %s , %s , %s\n",(Group_3[0]).name,(Group_3[1]).name,(Group_3[2]).name,(Group_3[3]).name);
+        printf("The Group 4: %s , %s , %s , %s\n",(Group_4[0]).name,(Group_4[1]).name,(Group_4[2]).name,(Group_4[3]).name);
+        printf("The Group 5: %s , %s , %s , %s\n",(Group_5[0]).name,(Group_5[1]).name,(Group_5[2]).name,(Group_5[3]).name);
+        printf("The Group 6: %s , %s , %s , %s\n",(Group_6[0]).name,(Group_6[1]).name,(Group_6[2]).name,(Group_6[3]).name);
+        printf("The Group 7: %s , %s , %s , %s\n",(Group_7[0]).name,(Group_7[1]).name,(Group_7[2]).name,(Group_7[3]).name);
+        printf("The Group 8: %s , %s , %s , %s\n",(Group_8[0]).name,(Group_8[1]).name,(Group_8[2]).name,(Group_8[3]).name);
 
 
     }
     
     return 0;
 }
-
